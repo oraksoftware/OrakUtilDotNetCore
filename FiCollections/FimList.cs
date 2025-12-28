@@ -1,6 +1,6 @@
 ﻿using OrakUtilDotNetCore.FiDataContainer;
 
-namespace OrakUtilDotNetCore.FiCollection
+namespace OrakUtilDotNetCore.FiCollections
 {
   public class FimList : List<FiMeta>
   {
