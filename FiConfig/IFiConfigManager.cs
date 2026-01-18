@@ -7,8 +7,8 @@
   {
     //Dictionary<string, string?> mapConnString { get; set; }
 
-    string GetConnString(string profile);
-    string GetApiUrl(string txProfile);
+    string GetConnString(string? profile);
+    string GetApiUrl(string? txProfile);
 
     /**
     * Ayar dosyasından okunarak alınacak profile
