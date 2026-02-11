@@ -23,25 +23,25 @@ public class FiKeytext : Dictionary<string, string>
   public void AddFiCol(FiCol ficol, string objValue)
   {
     GetSetFiColInit().Add(ficol);
-    Add(ficol.ofcTxFieldName, objValue);
+    Add(ficol.fcTxFieldName, objValue);
   }
 
   public void AddForceFiCol(FiCol ficol, string objValue)
   {
-    if (ContainsKey(ficol.ofcTxFieldName))
+    if (ContainsKey(ficol.fcTxFieldName))
     {
-      Remove(ficol.ofcTxFieldName);
+      Remove(ficol.fcTxFieldName);
     }
     else
     {
       GetSetFiColInit().Add(ficol);
     }
-    Add(ficol.ofcTxFieldName, objValue);
+    Add(ficol.fcTxFieldName, objValue);
   }
 
   public void AddFieldByFiCol(FiCol ficol, string objValue)
   {
-    Add(ficol.ofcTxFieldName, objValue);
+    Add(ficol.fcTxFieldName, objValue);
   }
 
   public void AddFieldByFim(FiMeta fiMeta, string objValue)
@@ -56,7 +56,7 @@ public class FiKeytext : Dictionary<string, string>
 
   public void AddFieldBy(FiCol ficol, string objValue)
   {
-    Add(ficol.ofcTxFieldName, objValue);
+    Add(ficol.fcTxFieldName, objValue);
   }
 
   /**
@@ -64,7 +64,7 @@ public class FiKeytext : Dictionary<string, string>
    */
   public void AddField(FiCol fiCol, string objValue)
   {
-    AddOverWrite(fiCol.ofcTxFieldName, objValue);
+    AddOverWrite(fiCol.fcTxFieldName, objValue);
   }
 
   public void AddOverWrite(string key, string objValue)
@@ -82,9 +82,9 @@ public class FiKeytext : Dictionary<string, string>
    */
   public void AddFieldIfNot(FiCol ficol, string objValue)
   {
-    if (!ContainsKey(ficol.ofcTxFieldName))
+    if (!ContainsKey(ficol.fcTxFieldName))
     {
-      Add(ficol.ofcTxFieldName, objValue);
+      Add(ficol.fcTxFieldName, objValue);
     }
   }
 
@@ -95,17 +95,17 @@ public class FiKeytext : Dictionary<string, string>
 
   public bool ContainsKeyByFiCol(FiCol fiCol)
   {
-    return ContainsKey(fiCol.ofcTxFieldName);
+    return ContainsKey(fiCol.fcTxFieldName);
   }
 
   public bool ContainsAnyKeyByFiCol(params FiCol[] fiCols)
   {
-    return fiCols.Any(fiCol => ContainsKey(fiCol.ofcTxFieldName));
+    return fiCols.Any(fiCol => ContainsKey(fiCol.fcTxFieldName));
   }
 
   public bool ContainsAllKeyByFiCol(params FiCol[] fiCols)
   {
-    return fiCols.All(fiCol => ContainsKey(fiCol.ofcTxFieldName));
+    return fiCols.All(fiCol => ContainsKey(fiCol.fcTxFieldName));
   }
 
   // public void ConvertCsvToListString(string txKey)
@@ -151,12 +151,12 @@ public class FiKeytext : Dictionary<string, string>
 
   public string GetFieldAsString(FiCol fiCol)
   {
-    return GetAsString(fiCol.ofcTxFieldName);
+    return GetAsString(fiCol.fcTxFieldName);
   }
 
   public object GetFieldAsObject(FiCol fiCol)
   {
-    return GetAsObject(fiCol.ofcTxFieldName);
+    return GetAsObject(fiCol.fcTxFieldName);
   }
   public object GetAsObject(string txKey)
   {
@@ -172,10 +172,10 @@ public class FiKeytext : Dictionary<string, string>
   }
   public FkbList GetFieldAsFkbList(FiCol fiCol)
   {
-    if (this.ContainsKey(fiCol.ofcTxFieldName))
+    if (this.ContainsKey(fiCol.fcTxFieldName))
     {
       // Değeri al ve string türüne çevir.
-      object value = this[fiCol.ofcTxFieldName];
+      object value = this[fiCol.fcTxFieldName];
 
       if (value is FkbList fkbList)
       {
@@ -192,15 +192,15 @@ public class FiKeytext : Dictionary<string, string>
   }
   public void RemoveField(FiCol fiCol)
   {
-    Remove(fiCol.ofcTxFieldName);
+    Remove(fiCol.fcTxFieldName);
   }
   public bool? GetFieldAsBool(FiCol psrsBoSuccess)
   {
     // Eğer sözlük belirtilen anahtarı içeriyorsa:
-    if (this.ContainsKey(psrsBoSuccess.ofcTxFieldName))
+    if (this.ContainsKey(psrsBoSuccess.fcTxFieldName))
     {
       // Değeri al ve string türüne çevir.
-      object value = this[psrsBoSuccess.ofcTxFieldName];
+      object value = this[psrsBoSuccess.fcTxFieldName];
       ;
 
       if (value is bool boValue)
@@ -216,9 +216,9 @@ public class FiKeytext : Dictionary<string, string>
   public double? GetFieldAsDouble(FiCol fiCol)
   {
 
-    if (this.ContainsKey(fiCol.ofcTxFieldName))
+    if (this.ContainsKey(fiCol.fcTxFieldName))
     {
-      object value = this[fiCol.ofcTxFieldName];
+      object value = this[fiCol.fcTxFieldName];
 
       if (value is double dbValue)
       {

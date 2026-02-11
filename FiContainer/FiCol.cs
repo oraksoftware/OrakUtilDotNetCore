@@ -5,37 +5,37 @@ namespace OrakUtilDotNetCore.FiDataContainer
 {
   public class FiCol
   {
-    public string ofcTxFieldName { get; set; }
+    public string fcTxFieldName { get; set; }
 
     /**
      * Veritabanında farklı bir alan ismi varsa, dbField'a yazılır
      */
-    public string ofcTxDbField { get; set; }
-    public string ofcTxHeader { get; set; }
+    public string fcTxDbField { get; set; }
+    public string fcTxHeader { get; set; }
 
     /**
      * Farklı sistemdeki ismi (xml alanındaki)
      */
-    public string ofcTxRefField { get; set; }
+    public string fcTxRefField { get; set; }
 
-    public string ofcTxFieldType { get; set; }
+    public string fcTxFieldType { get; set; }
 
     // /**
     //  * Alanın Veri Türü (FiColType dan alınabilir)
     //  */
     // public string ofcTxColType { get; set; }
 
-    public bool? ofcBoTransient { get; set; }
+    public bool? fcBoTransient { get; set; }
 
-    public bool? ofcBoNullable { get; set; }
+    public bool? fcBoNullable { get; set; }
 
-    public string ofcTxFieldDesc { get; set; }
+    public string fcTxFieldDesc { get; set; }
 
-    public int? ofcLnLength { get; set; }
-    public int? ofcLnPrecision { get; set; }
-    public int? ofcLnScale { get; set; }
+    public int? fcLnLength { get; set; }
+    public int? fcLnPrecision { get; set; }
+    public int? fcLnScale { get; set; }
 
-    public string ofcTxIdType { get; set; }
+    public string fcTxIdType { get; set; }
 
     public bool boInsertCol { get; set; }
 
@@ -47,7 +47,7 @@ namespace OrakUtilDotNetCore.FiDataContainer
     /**
      * Primary Key olduğunu gösterir
      */
-    public bool ofcBoPrimaryKey { get; set; }
+    public bool fcBoPrimaryKey { get; set; }
 
     //public FiWpfCntx refWpfCntx { get; set; }
 
@@ -62,24 +62,24 @@ namespace OrakUtilDotNetCore.FiDataContainer
     //  */
     //public FiColType fiColType { get; set; }
 
-    public string ofcTxCompType { get; set; }
+    public string fcTxCompType { get; set; }
 
-    public FimList ofcRefFimList { get; set; }
+    public FimList fcRefFimList { get; set; }
 
-    public FiCol(string ofcTxFieldName)
+    public FiCol(string fcTxFieldName)
     {
-      this.ofcTxFieldName = ofcTxFieldName;
+      this.fcTxFieldName = fcTxFieldName;
     }
 
-    public FiCol(string ofcTxFieldName, string ofcTxHeader)
+    public FiCol(string fcTxFieldName, string fcTxHeader)
     {
-      this.ofcTxFieldName = ofcTxFieldName;
-      this.ofcTxHeader = ofcTxHeader;
+      this.fcTxFieldName = fcTxFieldName;
+      this.fcTxHeader = fcTxHeader;
     }
 
     public string GetFieldName()
     {
-      return this.ofcTxFieldName;
+      return this.fcTxFieldName;
     }
 
     public FiCol()
@@ -88,7 +88,7 @@ namespace OrakUtilDotNetCore.FiDataContainer
 
     public override string ToString()
     {
-      return this.ofcTxFieldName ?? "";
+      return this.fcTxFieldName ?? "";
     }
 
     // public FiCol BuiColType(FiColType fiColType)
@@ -99,51 +99,51 @@ namespace OrakUtilDotNetCore.FiDataContainer
 
     public string GetOfcTxDbFieldOr()
     {
-      return FiString.IsEmpty(ofcTxDbField) ? ofcTxFieldName : ofcTxDbField;
+      return FiString.IsEmpty(fcTxDbField) ? fcTxFieldName : fcTxDbField;
     }
 
     // ReSharper disable once InconsistentNaming
     public string tof()
     {
-      return ofcTxFieldName;
+      return fcTxFieldName;
     }
     public bool CheckFiColIfPrimaryKey()
     {
-      return !FiString.IsEmpty(this.ofcTxIdType);
+      return !FiString.IsEmpty(this.fcTxIdType);
     }
 
     public bool CheckFiColIfIdentityPrimaryKey()
     {
-      if (FiString.IsEmpty(this.ofcTxIdType))
+      if (FiString.IsEmpty(this.fcTxIdType))
       {
         return false;
       }
 
-      return this.ofcTxIdType == "identity";
+      return this.fcTxIdType == "identity";
     }
 
     public string GetTxDbFieldOrTxFieldName()
     {
-      return !FiString.IsEmpty(ofcTxDbField) ? ofcTxDbField : ofcTxFieldName;
+      return !FiString.IsEmpty(fcTxDbField) ? fcTxDbField : fcTxFieldName;
     }
 
     // ReSharper disable once InconsistentNaming
     public string fnm()
     {
-      return this.ofcTxFieldName;
+      return this.fcTxFieldName;
     }
 
     public string fnmTemplate()
     {
-      return "{{" + this.ofcTxFieldName + "}}";
+      return "{{" + this.fcTxFieldName + "}}";
     }
 
     public bool IsText()
     {
-      if (this.ofcTxFieldType == null) return false;
+      if (this.fcTxFieldType == null) return false;
 
-      if (this.ofcTxFieldType.ToLower().Equals("text")
-        || this.ofcTxFieldType.IndexOf("nvarchar", StringComparison.OrdinalIgnoreCase) != -1
+      if (this.fcTxFieldType.ToLower().Equals("text")
+        || this.fcTxFieldType.IndexOf("nvarchar", StringComparison.OrdinalIgnoreCase) != -1
       )
       {
         return true;
@@ -152,9 +152,9 @@ namespace OrakUtilDotNetCore.FiDataContainer
     }
     public bool IsBool()
     {
-      if (this.ofcTxFieldType == null) return false;
+      if (this.fcTxFieldType == null) return false;
 
-      if (this.ofcTxFieldType.ToLower().Equals("bool"))
+      if (this.fcTxFieldType.ToLower().Equals("bool"))
       {
         return true;
       }
