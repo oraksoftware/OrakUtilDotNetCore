@@ -46,12 +46,12 @@ public class FiKeytext : Dictionary<string, string>
 
   public void AddFieldByFim(FiMeta fiMeta, string objValue)
   {
-    Add(fiMeta.txKey, objValue);
+    Add(fiMeta.ftTxKey, objValue);
   }
 
   public void AddFieldBy(FiMeta fiMeta, string objValue)
   {
-    Add(fiMeta.txKey, objValue);
+    Add(fiMeta.ftTxKey, objValue);
   }
 
   public void AddFieldBy(FiCol ficol, string objValue)

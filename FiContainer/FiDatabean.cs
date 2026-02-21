@@ -56,12 +56,12 @@ public class FiDatabean : Dictionary<int, object>
 
   public void AddFieldByFim(FiMeta fiMeta, object objValue)
   {
-    AddField(fiMeta.txKey, objValue);
+    AddField(fiMeta.ftTxKey, objValue);
   }
 
   public void AddFieldBy(FiMeta fiMeta, object objValue)
   {
-    Add(GetOrSetIndexForField(fiMeta.txKey), objValue);
+    Add(GetOrSetIndexForField(fiMeta.ftTxKey), objValue);
   }
 
   public void AddFieldBy(FiCol ficol, object objValue)

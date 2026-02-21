@@ -46,12 +46,12 @@ namespace OrakUtilDotNetCore.FiContainer
 
     public void AddFieldByFim(FiMeta fiMeta, object objValue)
     {
-      Add(fiMeta.txKey, objValue);
+      Add(fiMeta.ftTxKey, objValue);
     }
 
     public void AddFieldBy(FiMeta fiMeta, object objValue)
     {
-      Add(fiMeta.txKey, objValue);
+      Add(fiMeta.ftTxKey, objValue);
     }
 
     public void AddFieldBy(FiCol ficol, object objValue)

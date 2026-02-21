@@ -13,7 +13,7 @@ namespace OrakUtilDotNetCore.FiContainer
 
     public FieLog(FiMeta fimType, string txMess)
     {
-      this.txType = fimType.txKey; //txType;
+      this.txType = fimType.ftTxKey; //txType;
       this.txMess = txMess;
     }
   }
