@@ -1,6 +1,6 @@
 ﻿namespace OrakUtilDotNetCore.FiConfig
 {
-  public interface IFiLogManager
+  public interface IFiLogger
   {
     void Debug(string message);
 

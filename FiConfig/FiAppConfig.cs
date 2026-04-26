@@ -8,7 +8,7 @@ public static class FiAppConfig
 {
   public static bool boTestMode = false;
   public static IFiConfigManager? fiConfig;
-  public static IFiLogManager? fiLog;
+  public static IFiLogger? fiLog;
 
   public static void ConvertTestModeTrue()
   {
