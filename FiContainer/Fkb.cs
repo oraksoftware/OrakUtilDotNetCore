@@ -5,18 +5,18 @@ using System.Globalization;
 
 namespace OrakUtilDotNetCore.FiContainer
 {
-  public class FiKeybean : Dictionary<string, object>
+  public class Fkb : Dictionary<string, object>
   {
 
     public HashSet<FiCol> setFiCol { get; set; }
 
     //public string txTemplate {get; set;}
 
-    public FiKeybean()
+    public Fkb()
     {
     }
 
-    public FiKeybean(IDictionary<string, object> dictionary) : base(dictionary)
+    public Fkb(IDictionary<string, object> dictionary) : base(dictionary)
     {
     }
 
