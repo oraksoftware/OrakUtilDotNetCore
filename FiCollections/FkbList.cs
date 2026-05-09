@@ -2,7 +2,7 @@
 
 namespace OrakUtilDotNetCore.FiCollections
 {
-  public class FkbList: List<FiKeybean>
+  public class FkbList: List<Fkb>
   {
     public string txTemplate { get; set; }
 
@@ -20,7 +20,7 @@ namespace OrakUtilDotNetCore.FiCollections
     {
     }
 
-    public FkbList(IEnumerable<FiKeybean> collection) : base(collection)
+    public FkbList(IEnumerable<Fkb> collection) : base(collection)
     {
     }
 

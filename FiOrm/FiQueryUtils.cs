@@ -50,11 +50,11 @@ namespace OrakUtilDotNetCore.FiOrm
     /// <param name="listParamData"></param>
     /// <param name="boKeepOldParam"></param>
     /// <returns></returns>
-    public static string ConvertSingleParamToMultiParam(string txQuery, FiKeybean mapParams, String param, IList listParamData, bool boKeepOldParam)
+    public static string ConvertSingleParamToMultiParam(string txQuery, Fkb mapParams, String param, IList listParamData, bool boKeepOldParam)
     {
 
       // (1) şablona göre yeni eklenecek parametre listesi
-      // FiKeybean paramsNew = new FiKeybean();
+      // Fkb paramsNew = new Fkb();
       StringBuilder sbNewParamsForQuery = new StringBuilder();
 
       int index = 0;
@@ -89,7 +89,7 @@ namespace OrakUtilDotNetCore.FiOrm
       return param + "_" + index.ToString();
     }
 
-    public static string ConvertListParamToMultiParams(string txQuery, FiKeybean mapParams, bool boKeepOldMultiParamInFkb)
+    public static string ConvertListParamToMultiParams(string txQuery, Fkb mapParams, bool boKeepOldMultiParamInFkb)
     {
 
       if (mapParams == null) return txQuery;
@@ -171,7 +171,7 @@ namespace OrakUtilDotNetCore.FiOrm
     /// <param name="mapParams"></param>
     /// <param name="boActivateOnlyFullParams"></param>
     /// <returns></returns>
-    public static string ActivateParamsMain(string txQuery, FiKeybean mapParams, bool boActivateOnlyFullParams)
+    public static string ActivateParamsMain(string txQuery, Fkb mapParams, bool boActivateOnlyFullParams)
     {
 
       var listParamsDeActivated = new List<string>();
@@ -238,7 +238,7 @@ namespace OrakUtilDotNetCore.FiOrm
 
     }
 
-    public static string ActivateParamsNotNull(string txSqlValue, FiKeybean fkbParams)
+    public static string ActivateParamsNotNull(string txSqlValue, Fkb fkbParams)
     {
 
       if (fkbParams == null) return txSqlValue;
