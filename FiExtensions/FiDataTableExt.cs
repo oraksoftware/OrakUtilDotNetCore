@@ -1,0 +1,170 @@
+﻿using OrakUtilDotNetCore.FiCollections;
+using OrakUtilDotNetCore.FiContainer;
+using OrakUtilDotNetCore.FiDataContainer;
+using System.Data;
+using System.Text;
+
+namespace OrakUtilDotNetCore.FiExtensions
+{
+  public static class FiDataTableExt
+  {
+    // DataTable'ı CSV formatına çeviren extension metot
+    public static string ToCsvFi(this DataTable dataTable, char delimiter = ',')
+    {
+      if (dataTable == null)
+        throw new ArgumentNullException(nameof(dataTable));
+
+      StringBuilder csvBuilder = new StringBuilder();
+
+      // Sütun başlıklarını yazma
+      for (int i = 0; i < dataTable.Columns.Count; i++)
+      {
+        csvBuilder.Append(dataTable.Columns[i].ColumnName);
+        if (i < dataTable.Columns.Count - 1)
+          csvBuilder.Append(delimiter);
+      }
+      csvBuilder.AppendLine();
+
+      // Satır verilerini yazma
+      foreach (DataRow row in dataTable.Rows)
+      {
+        for (int i = 0; i < dataTable.Columns.Count; i++)
+        {
+          csvBuilder.Append(row[i]?.ToString());
+          if (i < dataTable.Columns.Count - 1)
+            csvBuilder.Append(delimiter);
+        }
+        csvBuilder.AppendLine();
+      }
+
+      return csvBuilder.ToString();
+    }
+
+    public static object GetCellAsObjectFi(this DataTable dataTable, int lnRowNo, string txFieldName)
+    {
+      // 1. DataTable null kontrolü
+      if (dataTable == null) return null;
+
+      // 2. Satır numarasının geçerli olup olmadığının kontrolü
+      if (lnRowNo < 0 || lnRowNo >= dataTable.Rows.Count) return null;
+
+      // 3. Kolon adının geçerli olup olmadığının kontrolü
+      if (!dataTable.Columns.Contains(txFieldName)) return null;
+
+      // 4. Satırda ilgili değer null olabilir, bunu kontrol edelim (isteğe bağlı)
+      object value = dataTable.Rows[lnRowNo][txFieldName];
+
+      return value;
+    }
+
+    public static string GetCellAsStringFi(this DataTable dataTable, int lnRowNo, string txFieldName)
+    {
+      // 1. DataTable null kontrolü
+      if (dataTable == null) return null;
+
+      // 2. Satır numarasının geçerli olup olmadığının kontrolü
+      if (lnRowNo < 0 || lnRowNo >= dataTable.Rows.Count) return null;
+
+      // 3. Kolon adının geçerli olup olmadığının kontrolü
+      if (!dataTable.Columns.Contains(txFieldName)) return null;
+
+      // 4. Satırda ilgili değer null olabilir, bunu kontrol edelim (isteğe bağlı)
+      object value = dataTable.Rows[lnRowNo][txFieldName];
+
+      return value?.ToString();
+    }
+
+    /**
+     * GetFieldAsObject
+     */
+    public static object GetFieldAsObj(this DataTable dataTable, int lnRowNo, FiCol fiCol)
+    {
+      return GetCellAsObjectFi(dataTable, lnRowNo, fiCol.fcTxFieldName);
+    }
+
+    public static int GetFieldAsIntOrZero(this DataTable dataTable, int lnRowNo, FiCol fiCol)
+    {
+      object objVAlue = GetCellAsObjectFi(dataTable, lnRowNo, fiCol.fcTxFieldName);
+
+      if (objVAlue == null) return 0;
+
+      return Int32.TryParse(objVAlue.ToString(), out int intValue) ? intValue : 0;
+    }
+
+    /**
+     * GetFieldAsString : alternatif metod isimlendirmesi
+     */
+    public static string GetFieldAsStr(this DataTable dataTable, int lnRowNo, FiCol fiCol)
+    {
+      return GetCellAsStringFi(dataTable, lnRowNo, fiCol.fcTxFieldName);
+    }
+
+    // DataTable'dan bir sütunu silen extension metot
+    public static void RemoveColumnFi(this DataTable dataTable, string columnName)
+    {
+      // Kontroller: DataTable'ın ve sütunun geçerli olması
+      if (dataTable == null)
+      {
+        //throw new ArgumentNullException(nameof(dataTable), "DataTable boş olamaz!");
+        return;
+      }
+
+
+      if (string.IsNullOrWhiteSpace(columnName)) return;
+      //throw new ArgumentException("Sütun adı boş veya geçersiz olamaz!", nameof(columnName));
+
+      if (!dataTable.Columns.Contains(columnName)) return;
+      //throw new ArgumentException($"'{columnName}' adlı sütun DataTable'da mevcut değil.", nameof(columnName));
+
+      // Sütunu sil
+      dataTable.Columns.Remove(columnName);
+    }
+
+    // DataTable'dan bir sütunu index ile silen extension metot
+    // public static void RemoveColumnAtFi(this DataTable dataTable, int columnIndex)
+    // {
+    //   // Kontroller: DataTable'ın ve index'in geçerli olması
+    //   if (dataTable == null)
+    //     throw new ArgumentNullException(nameof(dataTable), "DataTable boş olamaz!");
+    //
+    //   if (columnIndex < 0 || columnIndex >= dataTable.Columns.Count)
+    //     throw new IndexOutOfRangeException($"Geçersiz sütun index'i: {columnIndex}. Geçerli değerler 0-{dataTable.Columns.Count - 1} arasındadır.");
+    //
+    //   // Sütunu sil
+    //   dataTable.Columns.RemoveAt(columnIndex);
+    // }
+
+    public static FkbList ToFkbListFi(this DataTable dataTable)
+    {
+      if (dataTable == null) return new FkbList();
+      //throw new ArgumentNullException(nameof(dataTable));
+
+      // Yeni bir FkbList oluştur
+      var fkbList = new FkbList();
+
+      // DataTable'daki her satırı Fkb olarak ekle
+      foreach (DataRow row in dataTable.Rows)
+      {
+        // Yeni bir Fkb oluştur
+        var fiKeybean = new Fkb();
+
+        // DataTable'ın her kolonu için Fkb'e değer ekle
+        foreach (DataColumn column in dataTable.Columns)
+        {
+          string columnName = column.ColumnName;
+          object value = row[column] != DBNull.Value ? row[column] : null;
+
+          // Kolon adını ve değerini Fkb'e ekle
+          fiKeybean.Add(columnName, value);
+        }
+
+        // Fkb'i FkbList'e ekle
+        fkbList.Add(fiKeybean);
+      }
+
+      return fkbList;
+    }
+
+
+  }
+}

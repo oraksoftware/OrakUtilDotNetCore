@@ -1,4 +1,5 @@
-﻿using OrakUtilDotNetCore.FiContainer;
+﻿using OrakUtilDotNetCore.FiCollections;
+using OrakUtilDotNetCore.FiContainer;
 
 namespace OrakUtilDotNetCore.FiCore
 {
@@ -40,6 +41,17 @@ namespace OrakUtilDotNetCore.FiCore
         sb.AppendLine($"{keyValuePair.Key}={keyValuePair.Value}");
         index++;
       }
+      return sb.ToString();
+    }
+
+
+    public static string TextFkbList(FkbList fkblist)
+    {
+      StringBuilder sb = new StringBuilder();
+      sb.AppendLine("Fkb Content:");
+
+      fkblist.ForEach(fkb => sb.AppendLine($"{TextFkb(fkb)}"));
+
       return sb.ToString();
     }
   }
