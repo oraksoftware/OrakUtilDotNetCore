@@ -56,6 +56,7 @@ namespace OrakUtilDotNetCore.FiContainer
     //  */
     // public FkbList refFkbListVal { get; set; }
 
+    //[System.Text.Json.Serialization.JsonIgnore]
     /**
      * İşlem Dönüşü DataTable değeri
      */
