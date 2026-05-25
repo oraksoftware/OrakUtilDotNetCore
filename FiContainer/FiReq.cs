@@ -13,8 +13,13 @@ namespace OrakUtilDotNetCore.FiContainer
     public string? frTxToken { get; set; }
     public Fkb? frFkbParams { get; set; }
 
+
     public bool? frBoShowDoc { get; set; }
     public string? frTxDb { get; set; }
+
+    // tek değer gönderenler için
+    public string? frTxValue { get; set; }
+    public int? frLnValue { get; set; }
 
     public string GetTxProfile()
     {
