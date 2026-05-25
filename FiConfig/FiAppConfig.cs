@@ -7,7 +7,7 @@ using System.Drawing;
 public static class FiAppConfig
 {
   public static bool boTestMode = false;
-  public static IFiConfigManager? fiConfig;
+  public static IFiConfig? fiConfig;
   public static IFiLogger? fiLog;
 
   public static void ConvertTestModeTrue()

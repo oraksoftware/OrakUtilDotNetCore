@@ -3,7 +3,7 @@
   /**
    * App tarafında implemente eden class'dan bilgiler alınır
    */
-  public interface IFiConfigManager
+  public interface IFiConfig
   {
     //Dictionary<string, string?> mapConnString { get; set; }
 
