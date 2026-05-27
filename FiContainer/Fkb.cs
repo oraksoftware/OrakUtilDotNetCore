@@ -49,6 +49,11 @@ namespace OrakUtilDotNetCore.FiContainer
       Add(fiMeta.ftTxKey, objValue);
     }
 
+    public void AddFim(FiMeta fiMeta, object objValue)
+    {
+      Add(fiMeta.ftTxKey, objValue);
+    }
+
     public void AddFieldBy(FiMeta fiMeta, object objValue)
     {
       Add(fiMeta.ftTxKey, objValue);
@@ -150,6 +155,10 @@ namespace OrakUtilDotNetCore.FiContainer
 
     public string GetFieldAsString(FiCol fiCol){
       return GetAsString(fiCol.fcTxFieldName);
+    }
+
+    public string GetFimAsString(FiMeta fmt){
+      return GetAsString(fmt.ftTxKey);
     }
 
     public object GetFieldAsObject(FiCol fiCol){

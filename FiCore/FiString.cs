@@ -151,5 +151,10 @@ namespace OrakUtilDotNetCore.FiCore
       if (FiString.IsEmpty(txValue)) return "";
       return txPrefix + txValue;
     }
+    public static string[] Split(string txValue, string txDelimeter)
+    {
+      if (IsEmpty(txValue)) return [];
+      return txValue.Split([txDelimeter], StringSplitOptions.RemoveEmptyEntries);
+    }
   }
 }
