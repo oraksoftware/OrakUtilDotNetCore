@@ -54,7 +54,7 @@ public class Fdr
    */
   public Fkb fdFkbVal { get; set; }
 
-  private FkbList fdFkbListVal { get; set; }
+  public FkbList fdFkbListVal { get; set; }
 
   // Json dönüşümünde ignore etmek için kullanılır
   //[System.Text.Json.Serialization.JsonIgnore]

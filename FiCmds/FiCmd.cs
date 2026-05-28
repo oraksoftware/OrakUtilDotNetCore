@@ -63,7 +63,7 @@ namespace OrakUtilDotNetCore.FiCmds
 
       string outputError = process.StandardError.ReadToEnd();
       //fdrMain.txMessage += outputError.Trim();
-      fkb.AddFim(FimFiCmd.F1TxOutErr(), output.Trim());
+      fkb.AddFim(FimFiCmd.F1TxOutErr(), outputError.Trim());
       Log.Information($"process error output: {outputError}");
 
       process.WaitForExit();

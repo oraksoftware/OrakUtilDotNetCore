@@ -13,7 +13,7 @@ namespace OrakUtilDotNetCore.FiContainer
 
     public bool? fsBoResult { get; set; }
 
-    public object fsRefFdr { get; set; }
+    public Fdr fsRefFdr { get; set; }
 
     public object fsRefValue { get; set; }
 
@@ -50,11 +50,11 @@ namespace OrakUtilDotNetCore.FiContainer
       this.fsTxMessage = this.fsTxMessage + " " + sb.ToString();
     }
 
-    public void SetFdrResultToFir(Fdr fdr)
-    {
-      this.fsRefFdr = DtoFdr1.GenFdr1(fdr);
-      this.fsBoResult = fdr.IsTrueBoResult();
-    }
+    // public void SetFdrResultToFir(Fdr fdr)
+    // {
+    //   this.fsRefFdr = DtoFdr1.GenFdr1(fdr);
+    //   this.fsBoResult = fdr.IsTrueBoResult();
+    // }
 
     public object getAsDtoObject()
     {
