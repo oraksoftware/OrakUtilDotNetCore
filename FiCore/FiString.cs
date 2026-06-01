@@ -156,5 +156,10 @@ namespace OrakUtilDotNetCore.FiCore
       if (IsEmpty(txValue)) return [];
       return txValue.Split([txDelimeter], StringSplitOptions.RemoveEmptyEntries);
     }
+    public static string AddIfFull(string txOut, string s)
+    {
+      if (IsEmpty(txOut)) return txOut;
+      return txOut + s;
+    }
   }
 }

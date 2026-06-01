@@ -16,9 +16,9 @@ namespace OrakUtilDotNetCore.FiCmds
     //     .CreateLogger();
     // }
 
-    public static Fdr runCommand(string txCommand, string txArguments)
+    public static Fdr RunCommandOnAppBase(string txCommand, string txArguments)
     {
-      Log.Information($"run {txCommand} {txArguments}");
+      Log.Information($"RunCommandOnAppBase {txCommand} {txArguments}");
 
       Fdr fdrMain = new Fdr();
       Fkb fkb = new Fkb();
@@ -48,7 +48,7 @@ namespace OrakUtilDotNetCore.FiCmds
         WorkingDirectory = Path.GetDirectoryName(commandWitPath)
       };
 
-      using Process process = Process.Start(processInfo);
+      using Process? process = Process.Start(processInfo);
 
       if (process == null)
       {
@@ -57,14 +57,33 @@ namespace OrakUtilDotNetCore.FiCmds
         return fdrMain;
       }
 
-      string output = process.StandardOutput.ReadToEnd();
-      fkb.AddFim(FimFiCmd.F1TxOutSt(), output.Trim());
-      Log.Information($"process output: {output}");
+      string outputStand = process.StandardOutput.ReadToEnd();
+      Log.Information($"process output: {outputStand}");
 
       string outputError = process.StandardError.ReadToEnd();
-      //fdrMain.txMessage += outputError.Trim();
-      fkb.AddFim(FimFiCmd.F1TxOutErr(), outputError.Trim());
       Log.Information($"process error output: {outputError}");
+      //fdrMain.txMessage += outputError.Trim();
+
+      if (string.IsNullOrWhiteSpace(outputError))
+      {
+        //Log.Warning($"process error output: {outputError}");
+        outputError = "";
+      }
+
+      // Sadece gerçek hata mesajlarını göster
+      if (outputError.Contains("ERROR") || outputError.Contains("FATAL"))
+      {
+        //Console.WriteLine("Hata Çıktısı:" + txErr);
+        fkb.AddFim(FimFiCmd.F1TxOutErr(), outputError.Trim());
+        fdrMain.fdBoResult = false;
+      }
+      else
+      {
+        // Bilgilendirme/Notice Çıktısı
+        outputStand += "\n" + outputError.Trim();
+        fkb.AddFim(FimFiCmd.F1TxOutSt(), outputStand.Trim());
+        fdrMain.fdBoResult = true;
+      }
 
       process.WaitForExit();
       return fdrMain;
