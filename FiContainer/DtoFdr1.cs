@@ -64,7 +64,7 @@
       dynamic obj = new System.Dynamic.ExpandoObject();
 
       // Kalıcı alanlar
-      obj.boResult = fdr.fdBoResult;
+      obj.fdBoResult = fdr.fdBoResult;
       //obj.refValue = fdr.refValue;
 
       // Opsiyonel Alanlar
@@ -93,7 +93,7 @@
 
       //if (fdr.fdBoResult != null)
       //if (fdr.refValue != null)
-      obj.boResult = fiRes.fsBoResult;
+      obj.fsBoResult = fiRes.fsBoResult;
       //obj.refValue = fiRes.fsRefValue;
 
       if (fiRes.fsTxMessage != null) obj.fsTxMessage = fiRes.fsTxMessage;
