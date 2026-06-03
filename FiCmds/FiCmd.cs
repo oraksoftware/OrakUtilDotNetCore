@@ -86,6 +86,12 @@ namespace OrakUtilDotNetCore.FiCmds
       }
 
       process.WaitForExit();
+      int exitCode = process.ExitCode;
+
+      // exitCode == 0 ise komut başarıyla tamamlanmış demektir
+      // , ancak bazı durumlarda hata mesajları çıkabilir.
+      // Bu nedenle, exitCode'ye ek olarak error output'u da kontrol etmek önemlidir.
+
       return fdrMain;
     }
   }
