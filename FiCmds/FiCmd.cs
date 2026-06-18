@@ -16,9 +16,12 @@ namespace OrakUtilDotNetCore.FiCmds
     //     .CreateLogger();
     // }
 
+    /**
+     * Uygulamanın bulunduğu konumda komut çalıştırır
+     */
     public static Fdr RunCommandOnAppBase(string txCommand, string txArguments)
     {
-      Log.Information($"RunCommandOnAppBase {txCommand} {txArguments}");
+      Log.Information($"RunCommandOnAppBase called. {txCommand} {txArguments}");
 
       Fdr fdrMain = new Fdr();
       Fkb fkb = new Fkb();
@@ -27,6 +30,7 @@ namespace OrakUtilDotNetCore.FiCmds
       //ObmFile.CheckCreateUserFolder();
       //string txTimeStamp = FiDate.TxTimeStampForFile();
       //string arguments = $@"{txArguments}:";
+      Log.Information($"Base Dir: {AppDomain.CurrentDomain.BaseDirectory}");
 
       // rclone.exe'nin bulunduğu dizini belirle
       string commandWitPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, txCommand);
