@@ -15,6 +15,8 @@ namespace OrakUtilDotNetCore.FiContainer
 
     public Fdr fsRefFdr { get; set; }
 
+    public Fdr fsFdr { get; set; }
+
     public object fsRefValue { get; set; }
 
     public string fsTxVer { get; set; }

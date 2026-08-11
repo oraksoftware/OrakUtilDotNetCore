@@ -102,6 +102,11 @@
         obj.fsRefFdr = DtoFdr1.GenFdr3(fiRes.fsRefFdr);
       }
 
+      if (fiRes.fsFdr != null)
+      {
+        obj.fsFdr = DtoFdr1.GenFdr3(fiRes.fsFdr);
+      }
+
 
       return obj;
     }
