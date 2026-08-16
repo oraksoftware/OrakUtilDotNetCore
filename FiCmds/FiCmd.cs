@@ -19,9 +19,9 @@ namespace OrakUtilDotNetCore.FiCmds
     /**
      * Uygulamanın bulunduğu konumda komut çalıştırır
      */
-    public static Fdr RunCommandOnAppBase(string txCommand, string txArguments)
+    public static Fdr RunCommandOnAppRoot(string txCommand, string txArguments)
     {
-      Log.Information($"RunCommandOnAppBase called. {txCommand} {txArguments}");
+      Log.Information($"RunCommandOnAppRoot called. {txCommand} {txArguments}");
 
       Fdr fdrMain = new Fdr();
       Fkb fkb = new Fkb();
