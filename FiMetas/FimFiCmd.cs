@@ -4,7 +4,7 @@ namespace OrakUtilDotNetCore.FiMetas;
 
 // Csharp FiMeta Class Generation - v0.4
 
-public class FimFiCmd
+public static class FimFiCmd
 {
 
   public static FiMeta F1TxOutSt()

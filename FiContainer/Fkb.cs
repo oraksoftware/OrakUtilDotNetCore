@@ -8,7 +8,7 @@ namespace OrakUtilDotNetCore.FiContainer
   public class Fkb : Dictionary<string, object>
   {
 
-    public HashSet<FiCol> setFiCol { get; set; }
+    private HashSet<FiCol> setFiCol { get; set; }
 
     //public string txTemplate {get; set;}
 
@@ -20,13 +20,13 @@ namespace OrakUtilDotNetCore.FiContainer
     {
     }
 
-    public void AddFiCol(FiCol ficol, object objValue)
+    public void PutFiCol(FiCol ficol, object objValue)
     {
       GetSetFiColInit().Add(ficol);
       Add(ficol.fcTxFieldName, objValue);
     }
 
-    public void AddForceFiCol(FiCol ficol, object objValue)
+    public void PutForceFiCol(FiCol ficol, object objValue)
     {
       if (ContainsKey(ficol.fcTxFieldName))
       {
@@ -39,14 +39,9 @@ namespace OrakUtilDotNetCore.FiContainer
       Add(ficol.fcTxFieldName, objValue);
     }
 
-    public void AddFieldByFiCol(FiCol ficol, object objValue)
+    public void AddFicRaw(FiCol ficol, object objValue)
     {
       Add(ficol.fcTxFieldName, objValue);
-    }
-
-    public void AddFieldByFim(FiMeta fiMeta, object objValue)
-    {
-      Add(fiMeta.ftTxKey, objValue);
     }
 
     public void AddFim(FiMeta fiMeta, object objValue)
@@ -67,12 +62,12 @@ namespace OrakUtilDotNetCore.FiContainer
     /**
      * Default imple. Add Force (if exists, remove it, add)
      */
-    public void AddField(FiCol fiCol, object objValue)
+    public void AddFic(FiCol fiCol, object objValue)
     {
-      AddOverWrite(fiCol.fcTxFieldName, objValue);
+      AddOverwrite(fiCol.fcTxFieldName, objValue);
     }
 
-    public void AddOverWrite(string key, object objValue)
+    public void AddOverwrite(string key, object objValue)
     {
       this[key] = objValue;
       // if (ContainsKey(key))
@@ -85,7 +80,7 @@ namespace OrakUtilDotNetCore.FiContainer
     /**
      * Yoksa ekleme yapar, varsa birşey yapmaz
      */
-    public void AddFieldIfNot(FiCol ficol, object objValue)
+    public void AddFicIfNot(FiCol ficol, object objValue)
     {
       if (!ContainsKey(ficol.fcTxFieldName))
       {
@@ -98,20 +93,21 @@ namespace OrakUtilDotNetCore.FiContainer
       return setFiCol ??= new HashSet<FiCol>();
     }
 
-    public bool ContainsKeyByFiCol(FiCol fiCol)
+    public bool ContainsFic(FiCol fiCol)
     {
       return ContainsKey(fiCol.fcTxFieldName);
     }
 
-    public bool ContainsAnyKeyByFiCol(params FiCol[] fiCols)
+    public bool ContainsAnyFics(params FiCol[] fiCols)
     {
       return fiCols.Any(fiCol => ContainsKey(fiCol.fcTxFieldName));
     }
 
-    public bool ContainsAllKeyByFiCol(params FiCol[] fiCols)
+    public bool ContainsAllFics(params FiCol[] fiCols)
     {
       return fiCols.All(fiCol => ContainsKey(fiCol.fcTxFieldName));
     }
+
     public void ConvertCsvToListString(string txKey)
     {
       string txValue = GetAsString(txKey);
@@ -153,15 +149,18 @@ namespace OrakUtilDotNetCore.FiContainer
       return null;
     }
 
-    public string GetFieldAsString(FiCol fiCol){
+    public string GetFieldAsString(FiCol fiCol)
+    {
       return GetAsString(fiCol.fcTxFieldName);
     }
 
-    public string GetFimAsString(FiMeta fmt){
+    public string GetFimAsString(FiMeta fmt)
+    {
       return GetAsString(fmt.ftTxKey);
     }
 
-    public object GetFieldAsObject(FiCol fiCol){
+    public object GetFieldAsObject(FiCol fiCol)
+    {
       return GetAsObject(fiCol.fcTxFieldName);
     }
     public object GetAsObject(string txKey)
@@ -194,7 +193,7 @@ namespace OrakUtilDotNetCore.FiContainer
 
     public FkbList GetFieldAsFkbListNtn(FiCol fiCol)
     {
-      return GetFieldAsFkbList(fiCol)??new FkbList();
+      return GetFieldAsFkbList(fiCol) ?? new FkbList();
     }
     public void RemoveField(FiCol fiCol)
     {
@@ -206,9 +205,10 @@ namespace OrakUtilDotNetCore.FiContainer
       if (this.ContainsKey(psrsBoSuccess.fcTxFieldName))
       {
         // Değeri al ve string türüne çevir.
-        object value = this[psrsBoSuccess.fcTxFieldName];;
+        object value = this[psrsBoSuccess.fcTxFieldName];
+        ;
 
-        if(value is bool boValue)
+        if (value is bool boValue)
         {
           return boValue;
         }
@@ -225,7 +225,7 @@ namespace OrakUtilDotNetCore.FiContainer
       {
         object value = this[fiCol.fcTxFieldName];
 
-        if(value is double dbValue)
+        if (value is double dbValue)
         {
           return dbValue;
         }
@@ -239,7 +239,7 @@ namespace OrakUtilDotNetCore.FiContainer
 
     public double GetFieldAsDoubleNtn(FiCol fiCol)
     {
-      return GetFieldAsDouble(fiCol)??0;
+      return GetFieldAsDouble(fiCol) ?? 0;
     }
   }
 }
