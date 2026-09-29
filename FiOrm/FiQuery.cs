@@ -15,19 +15,34 @@ namespace OrakUtilDotNetCore.FiOrm
 
   public class FiQuery
   {
-    public string sql { get; set; }
+    public string? sql { get; set; }
 
-    public Fkb fkbParams { get; set; }
+    public Fkb? fkbParams { get; set; }
 
     // Query özellikleri
 
-    public IFiTableMeta fiTableMeta { get; set; }
+    /**
+     * Deprecated, use fkfAll
+     */
+    [Obsolete]
+    public IFiTableMeta? fiTableMeta { get; set; }
 
-    public FicList ficListCol { get; set; }
+    public FicList? ficListCol { get; set; }
 
+    /**
+     * Query Gen Configs
+     */
     public bool? boInsertFieldsOnly { get; set; }
 
+    /**
+     * Query Gen Configs
+     */
     public bool? boUseUpdateFieldsOnly { get; set; }
+
+    /**
+     * Tablonun tüm kolonlarını tutan Fkf
+     */
+    public Fkf? fkfAll { get; set; }
 
 
     public FiQuery()

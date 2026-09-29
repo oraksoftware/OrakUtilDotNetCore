@@ -4,7 +4,7 @@ namespace OrakUtilDotNetCore.FiMetas
 {
   // Csharp FiMeta Class Generation - v0.4
 
-  public class FimFtSql
+  public static class FimFtSql
   {
 
     public static FiMeta SfTableName()

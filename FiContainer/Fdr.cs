@@ -1,4 +1,5 @@
 ﻿using OrakUtilDotNetCore.FiCollections;
+using OrakUtilDotNetCore.FiConfig;
 using OrakUtilDotNetCore.FiCore;
 using OrakUtilDotNetCore.FiMetas;
 using System.Data;
@@ -359,4 +360,15 @@ public class Fdr
   }
 
 
+  public void Log()
+  {
+    if (FiBool.IsTrue(fdBoResult))
+    {
+      FiAppConfig.fiLog?.DebugGen<Fdr>($"Fdr Log: {txMessage}");
+    }
+    else
+    {
+      FiAppConfig.fiLog?.ErrorGen<Fdr>($"Fdr Log: {txMessage}");
+    }
+  }
 }

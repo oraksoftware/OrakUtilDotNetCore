@@ -134,7 +134,7 @@ namespace OrakUtilDotNetCore.FiExtensions
     //   dataTable.Columns.RemoveAt(columnIndex);
     // }
 
-    public static FkbList ToFkbListFi(this DataTable dataTable)
+    public static FkbList ToFkbListFi(this DataTable? dataTable)
     {
       if (dataTable == null) return new FkbList();
       //throw new ArgumentNullException(nameof(dataTable));
