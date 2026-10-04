@@ -1,8 +1,9 @@
+using OrakUtilDotNetCore.FiContainer;
+
 namespace OrakUtilDotNetCore.FiMetas;
 
 // Csharp FiMeta Class Generation - v0.4 
 //using OrakYazilimLib.Util.core;
-using FiDataContainer;
 
 public class FimFiCodeTemp
 {

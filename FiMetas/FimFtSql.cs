@@ -1,10 +1,11 @@
-﻿using OrakUtilDotNetCore.FiDataContainer;
+﻿using OrakUtilDotNetCore.FiContainer;
 
 namespace OrakUtilDotNetCore.FiMetas;
 
 // Csharp FiMeta Class Generation - v0.5
 //using OrakYazilimLib.Util.core;
-using OrakUtilDotNetCore.FiDataContainer;
+
+
 public class FimFtSql
 {
 

@@ -1,4 +1,4 @@
-﻿namespace OrakUtilDotNetCore.FiDataContainer
+﻿namespace OrakUtilDotNetCore.FiContainer
 {
   public class FiMeta
   {
