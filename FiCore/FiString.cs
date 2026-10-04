@@ -1,4 +1,6 @@
-﻿using System.Globalization;
+﻿using OrakUtilDotNetCore.FiConfig;
+using System.Globalization;
+using System.Text;
 
 namespace OrakUtilDotNetCore.FiCore
 {
@@ -160,6 +162,27 @@ namespace OrakUtilDotNetCore.FiCore
     {
       if (IsEmpty(txOut)) return txOut;
       return txOut + s;
+    }
+    public static void RTrim(StringBuilder sbVal, string txVal)
+    {
+      // StringBuilder değişkeninin sonundaki txVal değerini kaldırır.
+      if (txVal.Length > 0 && sbVal.Length >= txVal.Length)
+      {
+        int start = sbVal.Length - txVal.Length;
+        bool matches = true;
+        for (int i = 0; i < txVal.Length; i++)
+        {
+          if (sbVal[start + i] != txVal[i])
+          {
+            matches = false;
+            break;
+          }
+        }
+
+        if (matches) sbVal.Remove(start, txVal.Length);
+      }
+
+      //FiAppConfig.fiLog?.Debug($"RTrim: queryFields: {sbVal.ToString()} [txVal: {txVal}]");
     }
   }
 }

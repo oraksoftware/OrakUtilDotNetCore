@@ -106,9 +106,14 @@ namespace OrakUtilDotNetCore.FiContainer
     {
       return fcTxFieldName;
     }
-    public bool CheckFiColIfPrimaryKey()
+    public bool IsPrimaryKey()
     {
       return !FiString.IsEmpty(this.fcTxIdType);
+    }
+
+    public bool IsIdAutoIncrement()
+    {
+      return "auto".Equals(fcTxIdType, StringComparison.OrdinalIgnoreCase);
     }
 
     public bool CheckFiColIfIdentityPrimaryKey()
@@ -158,6 +163,10 @@ namespace OrakUtilDotNetCore.FiContainer
         return true;
       }
       return false;
+    }
+    public bool IsTransient()
+    {
+      return FiBool.IsTrue(this.fcBoTransient);
     }
   } // end class
 }

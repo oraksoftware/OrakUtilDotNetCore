@@ -208,6 +208,10 @@ namespace OrakUtilDotNetCore.FiOrm
     {
       return this.ficListCol ??= [];
     }
+    public Fkf GetFkfAllInit()
+    {
+      return this.fkfAll??= new Fkf();
+    }
   }
 
 }

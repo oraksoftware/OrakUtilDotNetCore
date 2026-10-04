@@ -49,7 +49,7 @@ namespace OrakUtilDotNetCore.FiOrm
 
       foreach (FiCol fiCol in list)
       {
-        if (fiCol.CheckFiColIfPrimaryKey())
+        if (fiCol.IsPrimaryKey())
         {
           continue;
         }

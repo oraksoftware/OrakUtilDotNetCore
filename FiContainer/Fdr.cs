@@ -47,7 +47,7 @@ public class Fdr
 
   //public string txResponse2 { get; set; }
 
-  private string fdTxVal { get; set; }
+  public string fdTxVal { get; set; }
 
   /**
    * İşlem Dönüşü Fkb Değeri
