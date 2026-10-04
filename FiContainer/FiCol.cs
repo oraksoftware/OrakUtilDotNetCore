@@ -1,7 +1,6 @@
-﻿using OrakUtilDotNetCore.FiCollections;
-using OrakUtilDotNetCore.FiCore;
+﻿using OrakUtilDotNetCore.FiCore;
 
-namespace OrakUtilDotNetCore.FiDataContainer
+namespace OrakUtilDotNetCore.FiContainer
 {
   public class FiCol
   {

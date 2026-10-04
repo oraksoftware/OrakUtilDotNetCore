@@ -1,6 +1,6 @@
 ﻿using OrakUtilDotNetCore.FiDataContainer;
 
-namespace OrakUtilDotNetCore.FiCollections
+namespace OrakUtilDotNetCore.FiContainer
 {
   public class FicList : List<FiCol>
   {

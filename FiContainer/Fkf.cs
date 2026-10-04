@@ -1,5 +1,4 @@
-﻿using OrakUtilDotNetCore.FiCollections;
-using OrakUtilDotNetCore.FiCore;
+﻿using OrakUtilDotNetCore.FiCore;
 using OrakUtilDotNetCore.FiDataContainer;
 using OrakUtilDotNetCore.FiMetas;
 using System.Globalization;

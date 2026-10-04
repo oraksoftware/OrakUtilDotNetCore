@@ -1,22 +1,20 @@
-﻿using OrakUtilDotNetCore.FiCollections;
-using OrakUtilDotNetCore.FiCore;
-using OrakUtilDotNetCore.FiDataContainer;
+﻿using OrakUtilDotNetCore.FiDataContainer;
 using System.Globalization;
 
 namespace OrakUtilDotNetCore.FiContainer;
 
-public class FiKeytext : Dictionary<string, string>
+public class Fks : Dictionary<string, string>
 {
 
   public HashSet<FiCol> setFiCol { get; set; }
 
   //public string txTemplate {get; set;}
 
-  public FiKeytext()
+  public Fks()
   {
   }
 
-  public FiKeytext(IDictionary<string, string> dictionary) : base(dictionary)
+  public Fks(IDictionary<string, string> dictionary) : base(dictionary)
   {
   }
 

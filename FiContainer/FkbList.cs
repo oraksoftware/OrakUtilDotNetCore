@@ -1,6 +1,4 @@
-﻿using OrakUtilDotNetCore.FiContainer;
-
-namespace OrakUtilDotNetCore.FiCollections
+﻿namespace OrakUtilDotNetCore.FiContainer
 {
   public class FkbList: List<Fkb>
   {

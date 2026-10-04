@@ -1,5 +1,4 @@
-﻿using OrakUtilDotNetCore.FiCollections;
-using OrakUtilDotNetCore.FiDataContainer;
+﻿using OrakUtilDotNetCore.FiDataContainer;
 using System.Text;
 
 namespace OrakUtilDotNetCore.FiContainer
