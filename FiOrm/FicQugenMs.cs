@@ -36,12 +36,12 @@ namespace OrakUtilDotNetCore.FiOrm
 
     public static string Insert(FicList list, IFiTableMeta iFiTableMeta)
     {
-      FimFtSql.SfTxFieldsIns();
-      FimFtSql.SfTxFieldsVar();
+      FimFtSql.SfFieldsIns();
+      FimFtSql.SfFieldsVar();
 
 
-      string template = "INSERT INTO {{tableName}} ( {{sfTxFieldsIns}} ) \n"
-        + " VALUES ( {{sfTxFieldsVar}} )";
+      string template = $"INSERT INTO {{tableName}} ( {FimFtSql.SfFieldsIns().getTempVar()} ) \n"
+        + $" VALUES ( {FimFtSql.SfFieldsVar().getTempVar()} )";
 
       StringBuilder queryFields = new StringBuilder();
       StringBuilder queryParams = new StringBuilder();
@@ -69,7 +69,7 @@ namespace OrakUtilDotNetCore.FiOrm
       Fkb fkbTemplate = new Fkb();
       fkbTemplate.Add("tableName", iFiTableMeta.GetITxTableName());
       fkbTemplate.AddFim(FimFtSql.SfTableFields(), queryFields.ToString());
-      fkbTemplate.AddFim( FimFtSql.SfTxFieldsVar(), queryParams.ToString());
+      fkbTemplate.AddFim( FimFtSql.SfFieldsVar(), queryParams.ToString());
 
       return FiTemplate.ReplaceTemplateParameters(template, fkbTemplate);
     }
