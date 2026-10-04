@@ -33,11 +33,26 @@
 
     public static FiMeta BuiLn(int ftLnKey)
     {
-      return new FiMeta() { ftLnKey = ftLnKey };
+      return new FiMeta()
+      {
+        ftLnKey = ftLnKey
+      };
     }
     public static FiMeta BuiLnAndKey(int lnKey, string txKey)
     {
-      return new FiMeta() { ftLnKey = lnKey, ftTxKey = txKey };
+      return new FiMeta()
+      {
+        ftLnKey = lnKey, ftTxKey = txKey
+      };
+    }
+    public string getTxPlah()
+    {
+      return "{{" + this.ftTxKey + "}}";
+    }
+
+    public string getTempVar()
+    {
+      return "{{" + this.ftTxKey + "}}";
     }
   }
 

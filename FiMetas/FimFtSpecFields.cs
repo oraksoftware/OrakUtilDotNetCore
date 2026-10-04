@@ -2,7 +2,7 @@
 
 namespace OrakUtilDotNetCore.FiMetas
 {
-// Csharp FiMeta Class Generation - v0.4
+  // Csharp FiMeta Class Generation - v0.4
 
 
   public class FimFtSpecFields

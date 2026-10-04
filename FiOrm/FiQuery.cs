@@ -13,6 +13,11 @@ namespace OrakUtilDotNetCore.FiOrm
   using System.Text.RegularExpressions;
   using System.Threading.Tasks;
 
+  /**
+   * FiQuery, sorgu çalıştırmak için gerekli sql sorgusu ve parametrelerini tutar
+   *
+   * Ayrıca, otomatik sorgu oluşturmak için gerekli sorgu konfigürasyonlarını da içerir.
+   */
   public class FiQuery
   {
     public string? sql { get; set; }
@@ -200,6 +205,10 @@ namespace OrakUtilDotNetCore.FiOrm
     }
 
 
+    public FicList GetFicListColNtn()
+    {
+      return this.ficListCol ??= [];
+    }
   }
 
 }

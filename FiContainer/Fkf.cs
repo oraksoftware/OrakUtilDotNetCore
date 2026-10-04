@@ -1,6 +1,7 @@
 ﻿using OrakUtilDotNetCore.FiCollections;
 using OrakUtilDotNetCore.FiCore;
 using OrakUtilDotNetCore.FiDataContainer;
+using OrakUtilDotNetCore.FiMetas;
 using System.Globalization;
 
 namespace OrakUtilDotNetCore.FiContainer
@@ -245,7 +246,7 @@ namespace OrakUtilDotNetCore.FiContainer
     // }
     public string GetFimHeaderNtn(FiMeta fiMeta)
     {
-      return GetFimHeader(fiMeta)??"";
+      return GetFimHeader(fiMeta) ?? "";
     }
 
     public string? GetFimHeader(FiMeta fiMeta)
@@ -262,5 +263,15 @@ namespace OrakUtilDotNetCore.FiContainer
       return null;
     }
 
+    public string GetTableName()
+    {
+      TryGetValue(FimFtSpecFields.QcfTxSqTableName().ftTxKey, out FiCol? qcfTxSqTableName);
+
+      if (qcfTxSqTableName != null)
+      {
+        return qcfTxSqTableName.fcTxHeader ?? "";
+      }
+      return "";
+    }
   }
 }
