@@ -4,7 +4,7 @@ using System.Text;
 
 namespace OrakUtilDotNetCore.FiCore
 {
-    /// <summary>
+  /// <summary>
   ///
   /// </summary>
   public static class FiString
