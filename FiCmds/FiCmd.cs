@@ -56,7 +56,7 @@ namespace OrakUtilDotNetCore.FiCmds
 
       if (process == null)
       {
-        fdrMain.txMessage = "process null";
+        fdrMain.fdTxMessage = "process null";
         fdrMain.fdBoResult = false;
         return fdrMain;
       }

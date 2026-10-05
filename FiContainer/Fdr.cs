@@ -40,11 +40,11 @@ public class Fdr
 
   public string txId { get; set; }
 
-  public string txMessage { get; set; }
+  public string fdTxMessage { get; set; }
 
-  public Exception refException { get; set; }
+  public Exception fdRefException { get; set; }
 
-  public string txResponse { get; set; }
+  public string fdTxResponse { get; set; }
 
   //public string txResponse2 { get; set; }
 
@@ -64,7 +64,7 @@ public class Fdr
    */
   public DataTable fdDtbVal { get; set; }
 
-  public List<FieLog> listFieLog { get; set; }
+  public List<FieLog> fdListFieLog { get; set; }
 
   // /**
   //  * External Object
@@ -82,7 +82,7 @@ public class Fdr
   // XIMSNIP ifnull yapısı
   public List<FieLog> GetListFieLogInit()
   {
-    return listFieLog ??= new List<FieLog>();
+    return fdListFieLog ??= new List<FieLog>();
   }
 
   /**
@@ -120,15 +120,15 @@ public class Fdr
     // }
 
     // Tümü için yapılacaklar
-    if (fdrSubWork.refException != null)
+    if (fdrSubWork.fdRefException != null)
     {
-      refException ??= fdrSubWork.refException;
+      fdRefException ??= fdrSubWork.fdRefException;
       // exception birden fazla olma ihtimali var.
       //getListExceptionInit().add(fdrSubWork.getException());
     }
 
     // Tüm işlemlerde mesaj birleştirilir.
-    if (!FiString.IsEmpty(fdrSubWork.txMessage)) AppendMessageLn(fdrSubWork.txMessage);
+    if (!FiString.IsEmpty(fdrSubWork.fdTxMessage)) AppendMessageLn(fdrSubWork.fdTxMessage);
 
     // Loglar birleştirilir.
     //if (!FiCollection.isEmpty(fdrSubWork.getLogList())) getLogListInit().addAll(fdrSubWork.getLogList());
@@ -172,9 +172,9 @@ public class Fdr
     CombineLogsAndMess(fdrSub);
 
     // Tümü için yapılacaklar
-    if (fdrSub.refException != null)
+    if (fdrSub.fdRefException != null)
     {
-      refException ??= fdrSub.refException;
+      fdRefException ??= fdrSub.fdRefException;
       // exception birden fazla olma ihtimali var.
       //getListExceptionInit().add(fdrSubWork.getException());
     }
@@ -236,12 +236,12 @@ public class Fdr
 
   public void AppendMessageLn(string txValue)
   {
-    txMessage = txMessage + (!FiString.IsEmpty(txMessage) ? "\n" : "") + txValue;
+    fdTxMessage = fdTxMessage + (!FiString.IsEmpty(fdTxMessage) ? "\n" : "") + txValue;
   }
 
   public void AppendMessageWithSc(string txValue)
   {
-    txMessage = txMessage + (!FiString.IsEmpty(txMessage) ? ";;" : "") + txValue;
+    fdTxMessage = fdTxMessage + (!FiString.IsEmpty(fdTxMessage) ? ";;" : "") + txValue;
   }
 
   public Fdr(bool fdBoResult) { this.fdBoResult = fdBoResult; }
@@ -312,14 +312,14 @@ public class Fdr
 
   public Fdr BuiMess(string txMessage)
   {
-    this.txMessage = txMessage;
+    this.fdTxMessage = txMessage;
     return this;
   }
 
   public void CombineLogsAndMess(Fdr fdrSubWork)
   {
     // Tüm işlemlerde mesaj birleştirilir.
-    if (!FiString.IsEmpty(fdrSubWork.txMessage)) AppendMessageLn(fdrSubWork.txMessage);
+    if (!FiString.IsEmpty(fdrSubWork.fdTxMessage)) AppendMessageLn(fdrSubWork.fdTxMessage);
 
     // Loglar Birleştirilir
     GetListFieLogInit().AddRange(fdrSubWork.GetListFieLogInit());
@@ -358,11 +358,11 @@ public class Fdr
   {
     if (FiBool.IsTrue(fdBoResult))
     {
-      FiAppConfig.fiLog?.DebugGen<Fdr>($"Fdr Log: {txMessage}");
+      FiAppConfig.fiLog?.DebugGen<Fdr>($"Fdr Log: {fdTxMessage}");
     }
     else
     {
-      FiAppConfig.fiLog?.ErrorGen<Fdr>($"Fdr Log: {txMessage}");
+      FiAppConfig.fiLog?.ErrorGen<Fdr>($"Fdr Log: {fdTxMessage}");
     }
   }
 }

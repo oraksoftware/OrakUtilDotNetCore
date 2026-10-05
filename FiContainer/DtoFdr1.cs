@@ -13,9 +13,9 @@
 
       //if (fdr.boExecution != null) obj.boExecution = fdr.boExecution;
       //if (fdr.fqpLnTotal != null) obj.fqpLnTotal = fdr.fqpLnTotal;
-      if (fdr.txMessage != null) obj.txMessage = fdr.txMessage;
+      if (fdr.fdTxMessage != null) obj.txMessage = fdr.fdTxMessage;
       if (fdr.txErrorMsgShort != null) obj.txErrorMsgShort = fdr.txErrorMsgShort;
-      if (fdr.txResponse != null) obj.txResponse = fdr.txResponse;
+      if (fdr.fdTxResponse != null) obj.txResponse = fdr.fdTxResponse;
       if (fdr.GetListFieLogInit().Count > 0) obj.listFieLog = fdr.GetListFieLogInit();
       if (fdr.fdDtbVal != null) obj.fdDtbVal = fdr.fdDtbVal;
 
@@ -40,9 +40,9 @@
 
       //if (fdr.boExecution != null) obj.boExecution = fdr.boExecution;
       //if (fdr.fqpLnTotal != null) obj.fqpLnTotal = fdr.fqpLnTotal;
-      if (fdr.txMessage != null) obj.txMessage = fdr.txMessage;
+      if (fdr.fdTxMessage != null) obj.txMessage = fdr.fdTxMessage;
       if (fdr.txErrorMsgShort != null) obj.txErrorMsgShort = fdr.txErrorMsgShort;
-      if (fdr.txResponse != null) obj.txResponse = fdr.txResponse;
+      if (fdr.fdTxResponse != null) obj.txResponse = fdr.fdTxResponse;
       if (fdr.GetListFieLogInit().Count > 0) obj.listFieLog = fdr.GetListFieLogInit();
       if (fdr.fdDtbVal != null) obj.refDtbVal = fdr.fdDtbVal;
 
@@ -70,10 +70,10 @@
       // Opsiyonel Alanlar
       //if (fdr.boExecution != null) obj.boExecution = fdr.boExecution;
       //if (fdr.fqpLnTotal != null) obj.fqpLnTotal = fdr.fqpLnTotal;
-      if (fdr.txMessage != null) obj.txMessage = fdr.txMessage;
+      if (fdr.fdTxMessage != null) obj.txMessage = fdr.fdTxMessage;
       if (fdr.refValue != null) obj.refValue = fdr.refValue;
       if (fdr.txErrorMsgShort != null) obj.txErrorMsgShort = fdr.txErrorMsgShort;
-      if (fdr.txResponse != null) obj.txResponse = fdr.txResponse;
+      if (fdr.fdTxResponse != null) obj.txResponse = fdr.fdTxResponse;
       if (fdr.GetListFieLogInit().Count > 0) obj.listFieLog = fdr.GetListFieLogInit();
       if (fdr.fdDtbVal != null) obj.refDtbVal = fdr.fdDtbVal;
       if (fdr.fdFkbListVal != null) obj.fdFkbListVal = fdr.fdFkbListVal;
