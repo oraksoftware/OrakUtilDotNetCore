@@ -69,7 +69,7 @@ namespace OrakUtilDotNetCore.FiOrm
       fkbTemplate.AddFim(FimFtSql.SfTableFields(), queryFields.ToString());
       fkbTemplate.AddFim( FimFtSql.SfFieldsVar(), queryParams.ToString());
 
-      return FiTemplate.ReplaceTemplateParameters(template, fkbTemplate);
+      return FiTemplate.ReplaceTemplateParams(template, fkbTemplate);
     }
   }
 

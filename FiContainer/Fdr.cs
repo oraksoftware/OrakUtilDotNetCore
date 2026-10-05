@@ -32,8 +32,9 @@ public class Fdr
 
   public int? lnIdAffected { get; set; }
 
-  // public int? fqpLnTotal { get; set; }
-  public object spec1 { get; set; }
+  //public int? fqpLnTotal { get; set; }
+
+  // public object spec1 { get; set; }
 
   public int? lnStatusCode { get; set; }
 
@@ -63,26 +64,20 @@ public class Fdr
    */
   public DataTable fdDtbVal { get; set; }
 
-
-
-
-
-
-
   public List<FieLog> listFieLog { get; set; }
 
-  /**
-   * External Object
-   */
-  public void SetExtObject<TS>(TS value)
-  {
-    this.spec1 = value;
-  }
+  // /**
+  //  * External Object
+  //  */
+  // public void SetExtObject<TS>(TS value)
+  // {
+  //   this.spec1 = value;
+  // }
 
-  public TS GetExtObject<TS>()
-  {
-    return (TS)this.spec1;
-  }
+  // public TS GetExtObject<TS>()
+  // {
+  //   return (TS)this.spec1;
+  // }
 
   // XIMSNIP ifnull yapısı
   public List<FieLog> GetListFieLogInit()

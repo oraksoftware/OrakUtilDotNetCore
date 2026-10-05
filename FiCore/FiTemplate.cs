@@ -5,17 +5,17 @@
 
   public class FiTemplate
   {
-    public string txValue { get; set; }
+    //public string txValue { get; set; }
 
-    public static string ReplaceTemplateParameters(string input, Dictionary<string, object> parameters)
+    public static string ReplaceTemplateParams(string input, Dictionary<string, object>? @params)
     {
-      if (string.IsNullOrEmpty(input) || parameters == null || parameters.Count == 0)
+      if (string.IsNullOrEmpty(input) || @params == null || @params.Count == 0)
         return input;
 
       return Regex.Replace(input, @"\{\{(.*?)\}\}", match =>
       {
         string key = match.Groups[1].Value.Trim();
-        return parameters.ContainsKey(key) ? parameters[key]?.ToString() : match.Value; // Eğer key varsa değiştir, yoksa olduğu gibi bırak.
+        return (@params.ContainsKey(key) ? @params[key]?.ToString() : match.Value) ?? ""; // Eğer key varsa değiştir, yoksa olduğu gibi bırak.
       });
     }
   }
